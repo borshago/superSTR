@@ -332,6 +332,8 @@ def render_distributions(random_sequence_ratios, repeat_in_read_ratios,
                          read_in_repeat_ratios, flanking_read_ratios, species,
                          dna_samples=None, read_len=150, threshold=0.55,
                          render_output_path="plots/"):
+    import matplotlib
+    matplotlib.use('Agg')
     import matplotlib.pyplot as plt
     import seaborn as sns
     sns.distplot(repeat_in_read_ratios, hist=False, rug=False,
@@ -568,6 +570,8 @@ if __name__ == "__main__":
                 optimal = numpy.argmax(tpr-fpr)
                 roc_threshold = thresholds[optimal]
                 roc_auc = auc(fpr, tpr)
+                import matplotlib
+                matplotlib.use('Agg')
                 import matplotlib.pyplot as plt
                 plt.figure()
                 lw = 2
